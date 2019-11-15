@@ -4,19 +4,13 @@ import requests
 from splinter import Browser
 import time
 
-#+++++++++++#
-#  Scraping #
-#+++++++++++#
-
 def scrape():
-
+    mars_dict = {}
     # Mars News Title
     # ===========================
 
     # Get the URL to be scraped
-    mars_news_url = "https://mars.nasa.gov/news/\
-    ?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&year\
-    =2019%3Apublish_date&category=19%2C165%2C184%2C204&blank_scope=Latest"
+    mars_news_url = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&year=2019%3Apublish_date&category=19%2C165%2C184%2C204&blank_scope=Latest"
 
     # Create Splinter Browser Instance
     browser = Browser('chrome')
@@ -26,15 +20,17 @@ def scrape():
     mars_news_soup = BeautifulSoup(mars_news_html, 'html5lib')
 
     # Close the browser
-
+    print(f'Latest Mars News Title: {mars_news_soup}')
     browser.quit()
 
 
     # Capture the Latest Mars News Title
-    latest_title = mars_news_soup.find("h3").text
+    print(mars_news_soup.find("h3"))
+    mars_dict['mnews_title'] = mars_news_soup.find("h3").text
 
     # Capture the Latest Mars News Paragraph Text
-    latest_pgraph = mars_news_soup.find("div", class_="article_teaser_body").text
+    mars_dict['mnews_pgraph'] = mars_news_soup.find("div", class_="article_teaser_body").text
+    
 
 
 
@@ -69,7 +65,7 @@ def scrape():
     jpl_lg_img_soup = BeautifulSoup(jpl_lg_img_html, 'html5lib')
 
     # Capture JPL Large Featured Image
-    featured_img_lg_url = "jpl.nasa.gov" + jpl_lg_img_soup.find("img",class_="main_image")['src']
+    mars_dict['jpl_img_lg_url'] = "https://www.jpl.nasa.gov" + jpl_lg_img_soup.find("img",class_="main_image")['src']
 
     # Close the Browser
     jpl_browser.quit()
@@ -91,7 +87,7 @@ def scrape():
     mars_weather_feed_soup = BeautifulSoup(mars_weather_feed_html,'html5lib')
 
     # Capture the Latest Mars Weather Report
-    mars_weather = mars_weather_feed_soup.find("div", class_="js-tweet-text-container").find('p').text.replace("\n"," ")
+    mars_dict['mars_weather'] = mars_weather_feed_soup.find("div", class_="js-tweet-text-container").find('p').text.replace("\n"," ")
 
     # Close Browser
     twitter_browser.quit()
@@ -157,7 +153,7 @@ def scrape():
         new_url_list.append(base_url + link.get('href'))
 
     # Scrape the full resolution image & title from each url and add it to a dictionary
-    full_img_dict = {}
+    full_img_list = []
     for url in new_url_list:
         hemi_browser.visit(url)
         full_img_html = hemi_browser.html
@@ -165,11 +161,14 @@ def scrape():
         full_img_url = full_img_soup.find("a", target="_blank").get('href')
         full_img_title = full_img_soup.find("h2", class_='title').text.replace('Enhanced',"").rstrip()
         
-        full_img_dict.update({'title': full_img_title, 'img_url': full_img_url})
+        full_img_list.append({'title': full_img_title, 'img_url': full_img_url})
         
     # Close the browser
     hemi_browser.quit()
+    mars_dict['full_img_list'] = full_img_list 
 
-    return full_img_dict
+    return mars_dict
 
-print(scrape())
+scrape()
+
+
