@@ -6,28 +6,147 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission to Mars</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
   <div class="container-fluid">
-    <div class="jumbotron text-center">
+     <div class="jumbotron text-center">
       <h1>Mission to Mars</h1>
       <br/>
       <br/>
       <p>The Latest Mars News...Jet Propulsion Lab Images...Current Mars Weather...Mars Facts...Martian Hemispheres... All with the click of a button!</p>
+      <br/>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+     </div>
+  </div>
+  
+  
+  <div class="container mx-auto">
+   <span class="border"> 
+    <div class="row bg-light">
+      <div class="col-5">  
+        <br/>
+        <br/>
+        <h2>Latest Mars News</h2>
+        <br/>
+        <p><b>{{ mars_records.mnews_title }}</b></p>
+        <p>{{ mars_records.mnews_pgraph }}</p>
+        <br/>
+        <br/>
+     
+        <div class="card" style="width: 25rem;">
+            <div class="card-body">
+              <h5 class="card-title">Current Weather on Mars</h5>
+              <p class="card-text">{{ mars_records.mars_weather }}</p>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <table border="1" class="dataframe">
+          <thead>
+            <tr style="text-align: left;">
+              <th>Category</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Equatorial Diameter:</th>
+              <td>6,792 km</td>
+            </tr>
+            <tr>
+              <th>Polar Diameter:</th>
+              <td>6,752 km</td>
+            </tr>
+            <tr>
+              <th>Mass:</th>
+              <td>6.39 × 10^23 kg (0.11 Earths)</td>
+            </tr>
+            <tr>
+              <th>Moons:</th>
+              <td>2 (Phobos &amp; Deimos)</td>
+            </tr>
+            <tr>
+              <th>Orbit Distance:</th>
+              <td>227,943,824 km (1.38 AU)</td>
+            </tr>
+            <tr>
+              <th>Orbit Period:</th>
+              <td>687 days (1.9 years)</td>
+            </tr>
+            <tr>
+              <th>Surface Temperature:</th>
+              <td>-87 to -5 °C</td>
+            </tr>
+            <tr>
+              <th>First Record:</th>
+              <td>2nd millennium BC</td>
+            </tr>
+            <tr>
+              <th>Recorded By:</th>
+              <td>Egyptian astronomers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-7">
+        <br/>
+        <br/>
+        <h2>Featured Mars Image from NASA's JPL</h2>
+        <img src='{{ mars_records.jpl_img_lg_url }}' alt="Latest JPL Image" width="600" height="500">
+      </div>
+    </span>
+  </div>
+  <div class= "container bg-light">
+    <span class="border">
+    <div class= "row pt-5">
+      <div class= "col-12">
+          <h2 class="text-center">Mars Hemispheres</h2>
+          <hr>
+      </div>
     </div>
-    <h2>Latest Mars News</h2>
-    <br/>
-    <p><b>{{ mars_records.mnews_title }}</b></p>
-    <p>{{ mars_records.mnews_pgraph }}</p>
-    <br/>
-    <h2>Featured Mars Image from the JPL</h2>
-    <img src='{{ mars_records.jpl_img_lg_url }}' alt="Latest JPL Image">
+    <div class= "row pt-4">
+      <div class= "col-12">
+          <div class="card-deck">
+              <div class="card">
+                <img src="{{ mars_records.full_img_list[0].img_url}}" class="card-img-top" alt="{{ mars_records.full_img_list[0].title }}<">
+                <div class="card-body">
+                  <h2 class="card-title">{{ mars_records.full_img_list[0].title }}</h2>
+                </div>
+              </div>
+              <div class="card">
+                <img src="{{ mars_records.full_img_list[1].img_url}}"" class="card-img-top" alt="{{ mars_records.full_img_list[1].title }}">
+                <div class="card-body">
+                  <h2 class="card-title">{{ mars_records.full_img_list[1].title }}</h2>
+                </div>
+              </div>   
+          </div>
+      </div>
+    </div> 
+    <div class= "row pt-4">
+      <div class= "col-12">
+        <div class="card-deck">
+          <div class="card">
+            <img src="{{ mars_records.full_img_list[2].img_url}}" class="card-img-top" alt="{{ mars_records.full_img_list[2].title }}<">
+            <div class="card-body">
+              <h2 class="card-title">{{ mars_records.full_img_list[2].title }}</h2>
+            </div>
+          </div>
+          <div class="card">
+            <img src="{{ mars_records.full_img_list[3].img_url}}"" class="card-img-top" alt="{{ mars_records.full_img_list[3].title }}">
+            <div class="card-body">
+              <h2 class="card-title">{{ mars_records.full_img_list[3].title }}</h2>
+            </div>
+          </div>   
+        </div>
+      </div>
+      </div> 
+  </span> 
+  </div>
+</div>
 
-  </div>
-  </div>
 </body>
+
 
 </html>

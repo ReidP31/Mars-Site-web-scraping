@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
+import scrape_mars
 
 
 
@@ -24,7 +25,7 @@ def home():
     
 @app.route("/scrape")
 def m_scrape():
-    import scrape_mars
+    
 
     # Run the scrape function
     mars_data = scrape_mars.scrape()

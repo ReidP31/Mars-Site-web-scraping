@@ -88,7 +88,7 @@ def scrape():
 
     # Capture the Latest Mars Weather Report
     mars_dict['mars_weather'] = mars_weather_feed_soup.find("div", class_="js-tweet-text-container").find('p').text.replace("\n"," ")
-
+    mars_dict['mars_weather'] = mars_dict['mars_weather'].split('pic.twitter')[0]
     # Close Browser
     twitter_browser.quit()
 
@@ -169,6 +169,6 @@ def scrape():
 
     return mars_dict
 
-scrape()
+
 
 
