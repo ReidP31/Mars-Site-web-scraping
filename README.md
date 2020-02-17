@@ -1,8 +1,7 @@
 # NASA/Mars Web-scraping Site
 
 Created a website with Mars info using Splinter to scrape various NASA sites.  
-  
-
+<br />  
 
   
 ![](Missions_to_Mars/App_Screenshots/Shot_1.png)
