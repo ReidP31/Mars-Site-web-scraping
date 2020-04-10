@@ -1,4 +1,4 @@
-# NASA/Mars Web-scraping Site
+# Mission to Mars
 
 Created a website with Mars info using Splinter to scrape various websites.  
 <br />  
