@@ -8,8 +8,14 @@ For this project, I created a dashboard with Mars information using BeautifulSou
 * Latest Mars News Article from nasa.gov
 * The featured image on NASA's Jet Propulsion Laboratory site
 * Mars weather from the Mars curiosity rover via the Mars Weather Report Twitter account
+* Table with Mars data from space-facts.com
 * Images of Mars's hemispheres from the US Geological Survey's Astrogeology site
- 
+
+<br/>
+
+## Screenshots
+
+
 ![](Missions_to_Mars/App_Screenshots/Shot_1.png)
 ![](Missions_to_Mars/App_Screenshots/Shot_2.png)
 ![](Missions_to_Mars/App_Screenshots/Shot_3.png)
