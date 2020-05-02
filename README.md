@@ -1,6 +1,6 @@
 # Mission to Mars
 
-Created a website with Mars info using Splinter to scrape various websites.  
+For this project, I created a dashboard with Mars information using BeautifulSoup & Splinter to scrape Mars websites.  
 <br />  
 
   
